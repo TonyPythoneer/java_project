@@ -1,3 +1,4 @@
 .settings
 bin
-biuld
+build
+.gradle

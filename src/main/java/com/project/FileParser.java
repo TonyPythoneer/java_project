@@ -27,6 +27,7 @@ public class FileParser extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder().matchEquals(PARSE, str -> {
+            log.info("FileParser reveives parse message!");
             this.handle();
         }).matchAny(obj -> {
             log.info("FileParser receive unknown");

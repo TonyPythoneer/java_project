@@ -33,10 +33,13 @@ public class Aggregator extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder().matchEquals(START_OF_FILE, m -> {
+            // log.info("Aggregator reveives start-of-file event!");
             this.handleStartOfFile();
         }).matchEquals(LINE, m -> {
+            // log.info("Aggregator reveives line event!");
             this.handleLine();
         }).matchEquals(END_OF_FILE, m -> {
+            // log.info("Aggregator reveives end-of-file event!");
             this.handleEndOfFile();
         }).matchAny(obj -> {
             log.info("unknown");

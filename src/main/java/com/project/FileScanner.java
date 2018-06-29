@@ -26,6 +26,7 @@ public class FileScanner extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder().matchEquals(SCAN, str -> {
+            log.info("FileScanner reveives scan message!");
             this.handle();
         }).matchAny(obj -> {
             log.info("FileScanner receive unknown");
@@ -34,8 +35,7 @@ public class FileScanner extends AbstractActor {
 
     private void handle() throws IOException {
         Files.list(this.directory).filter(Files::isRegularFile).forEach(fileNamePath -> {
-            log.info("Create fileParser");
-            String actorName = "file-parser-" + fileNamePath.toAbsolutePath().hashCode();
+            String actorName = "fileParser-" + fileNamePath.toAbsolutePath().hashCode();
             ActorRef fileParser = getContext().actorOf(Props.create(FileParser.class, fileNamePath), actorName);
             fileParser.tell(FileParser.PARSE, ActorRef.noSender());
         });

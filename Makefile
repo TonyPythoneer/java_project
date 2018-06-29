@@ -10,4 +10,4 @@ install_gradle:
 	unzip -d /opt/gradle gradle-4.8.1-bin.zip; \
 	rm gradle-4.8.1-bin.zip; \
 	ls /opt/gradle/gradle-4.8.1;
-	# export PATH=$$PATH:/opt/gradle/gradle-4.8.1/bin
+	# export PATH=$PATH:/opt/gradle/gradle-4.8.1/bin

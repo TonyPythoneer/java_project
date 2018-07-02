@@ -32,3 +32,14 @@ Each actor's handler detail has described on the picture.
 ## Execution Result
 
 ![Execution Result](./execution_result.png)
+
+## Akka feature
+
+* Processing: Actor is async processing. It doesn't affect caller's thread.
+* Storage: Actor can store state in itself and every actor's state is independent.
+* Communication: It can use message to communicate between actors.
+
+This project hopes that developer know akka how to work. So, it uses file IO as sample.
+
+Suppose the directory has three file. In general, it needs to
+read sequentially each file, the excuting time will occupy the same one CPU slice. If using akka, it can make independent actor and send filepath as message, let every actor can handle one file, it's good to use CPU resource and   can individually process file.
